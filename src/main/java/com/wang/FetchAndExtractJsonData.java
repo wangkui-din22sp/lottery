@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class FetchAndExtractJsonData {
     public static void main(String[] args) {
@@ -27,9 +28,10 @@ public class FetchAndExtractJsonData {
             CodeMatrix codeMatrix = new CodeMatrix();
 
             // Extract and print PeriodNo and OpenCode
-            byte countStraightEvenNumber = 1, countStraightOddNumber = 1;
-            ArrayList<Byte> countStraightEvenNumbers = new ArrayList<>();
-            ArrayList<Byte> countStraightOddNumbers = new ArrayList<>();
+            byte countStraightEvenNumber = 1, countStraightOddNumber = 1, countAlternatingNumber = 2;
+            ArrayList<CountStraightEvenNumber> countStraightEvenNumberList = new ArrayList<CountStraightEvenNumber>();
+            ArrayList<CountStraightOddNumber> countStraightOddNumberList = new ArrayList<CountStraightOddNumber>();
+            ArrayList<CountAlternatingPattern> countAlternatingPatternList = new ArrayList<CountAlternatingPattern>();
             boolean isTwoConsecutiveEven = false, isTwoConsecutiveOdd = false;
 
             int i = 0;
@@ -54,7 +56,8 @@ public class FetchAndExtractJsonData {
                         System.out.println(entryNumber + " " + "\u001B[32m" + codeMatrix.codeMatrix[i][j]  + "\u001B[0m");   
                     }
                     else { 
-                            if (countStraightEvenNumber>1) countStraightEvenNumbers.add(countStraightEvenNumber); 
+                            if (countStraightEvenNumber>1) { 
+                            countStraightEvenNumberList.add(new CountStraightEvenNumber(countStraightEvenNumber, entryNumber+countStraightEvenNumber, entryNumber+1));}
                             countStraightEvenNumber =1;}
     
                     if (codeMatrix.codeMatrix[i][j] % 2 ==1  && codeMatrix.codeMatrix[i-1][j] % 2 ==1) { 
@@ -63,15 +66,26 @@ public class FetchAndExtractJsonData {
                         System.out.println(entryNumber + " " + "\u001B[34m" + codeMatrix.codeMatrix[i][j] + "\u001B[0m" );   
                     }
                     else {
-                            if (countStraightOddNumber>1) countStraightOddNumbers.add(countStraightOddNumber);
+                            if (countStraightOddNumber>1) { 
+                            countStraightOddNumberList.add(new CountStraightOddNumber(countStraightOddNumber, entryNumber+countStraightOddNumber, entryNumber+1));}
                             countStraightOddNumber =1;}
 
                     if ( (i>=2) && (isTwoConsecutiveEven==false && isTwoConsecutiveOdd==false) && ( 
                         (codeMatrix.codeMatrix[i][j] % 2 ==1  && codeMatrix.codeMatrix[i-2][j] % 2 ==1) || (codeMatrix.codeMatrix[i][j] % 2 ==0  && codeMatrix.codeMatrix[i-2][j] % 2 ==0)) 
-                 ){
+                    ){
                         // System.out.println(entryNumber+2 + " " + "\u001B[31m" + codeMatrix.codeMatrix[i-2][j] + "\u001B[0m");
                         // System.out.println(entryNumber+1 + " " + "\u001B[31m" + codeMatrix.codeMatrix[i-1][j] + "\u001B[0m");
-                        System.out.println(entryNumber + " " + "\u001B[31m" + codeMatrix.codeMatrix[i][j]+ "\u001B[0m" );}
+                        countAlternatingNumber++;
+                        System.out.println(entryNumber + " " + "\u001B[31m" + codeMatrix.codeMatrix[i][j]+ "\u001B[0m" );
+                    
+                    }
+                    else { 
+                            if (countAlternatingNumber>2) {
+                            countAlternatingPatternList.add(new CountAlternatingPattern(countAlternatingNumber, entryNumber+countAlternatingNumber, entryNumber+1));
+                            countAlternatingNumber =2;
+
+                            } }
+
 
                     
                     }
@@ -85,12 +99,32 @@ public class FetchAndExtractJsonData {
                 i++; isTwoConsecutiveEven=false; isTwoConsecutiveOdd=false;
 
             }
-            for (Byte countStraightEvenNumberElement : countStraightEvenNumbers) {
-                System.out.println("countStraightEvenNumber: " + countStraightEvenNumberElement);
+
+            for (CountStraightEvenNumber countStraightEvenNumberListElement : countStraightEvenNumberList) {
+                System.out.println("countStraightEvenNumber: " + countStraightEvenNumberListElement.getCountStraightEvenNumber());
+                System.out.println("StartingEntryNumber: " + countStraightEvenNumberListElement.getStartingEntryNumber());
+                System.out.println("EndingEntryNumber: " + countStraightEvenNumberListElement.getEndingEntryNumber());
             }
-            for (Byte countStraightOddNumberElement : countStraightOddNumbers) {
-                System.out.println("countStraightOddNumber: " + countStraightOddNumberElement);
+
+            System.out.println(" ");
+
+            for (CountStraightOddNumber countStraightOddNumberListElement : countStraightOddNumberList) {
+                System.out.println("countStraightOddNumber: " + countStraightOddNumberListElement.getCountStraightOddNumber());
+                System.out.println("StartingEntryNumber: " + countStraightOddNumberListElement.getStartingEntryNumber());
+                System.out.println("EndingEntryNumber: " + countStraightOddNumberListElement.getEndingEntryNumber());
             }
+
+            System.out.println(" ");
+
+            for (CountAlternatingPattern countAlternatingPatternListElement : countAlternatingPatternList) {
+                System.out.println("countAlternatingPattern: " + countAlternatingPatternListElement.getCountAlternatingPattern());
+                System.out.println("StartingEntryNumber: " + countAlternatingPatternListElement.getStartingEntryNumber());
+                System.out.println("EndingEntryNumber: " + countAlternatingPatternListElement.getEndingEntryNumber());
+            }
+
+
+
+
         } catch (IOException e) {
             e.printStackTrace();
         }
