@@ -99,28 +99,31 @@ public class FetchAndExtractJsonData {
                 i++; isTwoConsecutiveEven=false; isTwoConsecutiveOdd=false;
 
             }
-
+            
+            System.out.println(" ");
             for (CountStraightEvenNumber countStraightEvenNumberListElement : countStraightEvenNumberList) {
-                System.out.println("countStraightEvenNumber: " + countStraightEvenNumberListElement.getCountStraightEvenNumber());
+                System.out.println("\u001B[32m"+"countStraightEvenNumber: " + countStraightEvenNumberListElement.getCountStraightEvenNumber());
                 System.out.println("StartingEntryNumber: " + countStraightEvenNumberListElement.getStartingEntryNumber());
                 System.out.println("EndingEntryNumber: " + countStraightEvenNumberListElement.getEndingEntryNumber());
             }
-
+            System.out.println("total size of countStraightEvenNumberList: " + countStraightEvenNumberList.size());
             System.out.println(" ");
 
             for (CountStraightOddNumber countStraightOddNumberListElement : countStraightOddNumberList) {
-                System.out.println("countStraightOddNumber: " + countStraightOddNumberListElement.getCountStraightOddNumber());
+                System.out.println("\u001B[34m"+"countStraightOddNumber: " + countStraightOddNumberListElement.getCountStraightOddNumber());
                 System.out.println("StartingEntryNumber: " + countStraightOddNumberListElement.getStartingEntryNumber());
                 System.out.println("EndingEntryNumber: " + countStraightOddNumberListElement.getEndingEntryNumber());
             }
-
+            System.out.println("total size of countStraightOddNumberList: " + countStraightOddNumberList.size());
             System.out.println(" ");
 
             for (CountAlternatingPattern countAlternatingPatternListElement : countAlternatingPatternList) {
-                System.out.println("countAlternatingPattern: " + countAlternatingPatternListElement.getCountAlternatingPattern());
+                System.out.println("\u001B[31m"+"countAlternatingPattern: " + countAlternatingPatternListElement.getCountAlternatingPattern());
                 System.out.println("StartingEntryNumber: " + countAlternatingPatternListElement.getStartingEntryNumber());
                 System.out.println("EndingEntryNumber: " + countAlternatingPatternListElement.getEndingEntryNumber());
             }
+            System.out.println("total size of countAlternatingPatternList: " + countAlternatingPatternList.size());
+            System.out.println(" ");
 
 
 
