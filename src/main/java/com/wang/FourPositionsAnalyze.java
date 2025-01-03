@@ -4,14 +4,11 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import java.util.HashSet;
 import java.util.Set;
 
-
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class FourPositionsAnalyze {
 
@@ -184,15 +181,30 @@ public class FourPositionsAnalyze {
             if (!canGoThroughSuccessfully0 && !canGoThroughSuccessfully1 && !canGoThroughSuccessfully2 && !canGoThroughSuccessfully3) {
             System.out.println("\u001B[31m" + "KILL KILL KILL KILL" + "\u001B[0m" );}
 
+
             i++;
             System.out.println();
+            
         }
-    
+
+        
+    int[][] indices = new int[4][3];
+    for (int j=0; j<4; j++) {
+        for (int k=0; k<3; k++) {
+            if (k>=j) indices[j][k] = k+1;
+            else indices[j][k] = k;
+            System.out.println("indices[" + j + "][" + k + "] = " + indices[j][k]);
+        }
+        
+        
+    }
     
     } catch (Exception e) {
         e.printStackTrace();}
 
     }
+
+   
 
     
 
