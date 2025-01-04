@@ -16,7 +16,7 @@ public class FourPositionsAnalyze {
 
     try {
         // The URL endpoint
-        String url = "https://www.uk-wl.net/Penta5Classic/0d2d48772cd48f41e761ef99f40e3ac0/allday/2024-12-31?_=" + System.currentTimeMillis();
+        String url = "https://www.uk-wl.net/Penta5Classic/0d2d48772cd48f41e761ef99f40e3ac0/allday/2025-01-03?_=" + System.currentTimeMillis();
 
         HttpClient client = HttpClient.newHttpClient();
 
@@ -55,6 +55,10 @@ public class FourPositionsAnalyze {
             System.out.println();
 
             boolean canGoThroughSuccessfully0 = false;
+            if ( codeMatrix.codeMatrix[i][0]==codeMatrix.codeMatrix[i][1] && codeMatrix.codeMatrix[i][0]==codeMatrix.codeMatrix[i][2] ) 
+                System.out.print("    " +  "\u001B[31m" + codeMatrix.codeMatrix[i][0] + " " + codeMatrix.codeMatrix[i][1] + " " + codeMatrix.codeMatrix[i][2] + "\u001B[0m");
+            else {
+            outerloop:
             for (byte j1=0; j1<3; j1++) {
                 for (byte j2=0; j2<3; j2++) {
                     if (j2==j1) continue;
@@ -66,25 +70,35 @@ public class FourPositionsAnalyze {
                             canGoThroughSuccessfully0 = true;     }
                         else {
                             canGoThroughSuccessfully0 = false; 
-                            break;
+                            break outerloop;
                         }
                     }
                 }
             }
+            
 
             if (canGoThroughSuccessfully0) {
                Set<Integer> validValues = new HashSet<>(); validValues.add(0);validValues.add(1);validValues.add(2);validValues.add(6);
                if ( validValues.contains( (codeMatrix.codeMatrix[i][0] + codeMatrix.codeMatrix[i][1]) % 10 ) || 
                     validValues.contains( (codeMatrix.codeMatrix[i][0] + codeMatrix.codeMatrix[i][2]) % 10 ) ||
                     validValues.contains( (codeMatrix.codeMatrix[i][1] + codeMatrix.codeMatrix[i][2]) % 10 ) ) {
-                    System.out.print("    " + codeMatrix.codeMatrix[i][0] + " " + codeMatrix.codeMatrix[i][1] + " " + codeMatrix.codeMatrix[i][2]);
+                    System.out.print("    " +  "\u001B[32m" + codeMatrix.codeMatrix[i][0] + " " + codeMatrix.codeMatrix[i][1] + " " + codeMatrix.codeMatrix[i][2] + "\u001B[0m");
                 }
                 else {
                     canGoThroughSuccessfully0 = false;
+                    System.out.print("    " +  "\u001B[31m" + codeMatrix.codeMatrix[i][0] + " " + codeMatrix.codeMatrix[i][1] + " " + codeMatrix.codeMatrix[i][2] + "\u001B[0m");
                 }
+            }
+            else {
+                System.out.print("    " +  "\u001B[31m" + codeMatrix.codeMatrix[i][0] + " " + codeMatrix.codeMatrix[i][1] + " " + codeMatrix.codeMatrix[i][2] + "\u001B[0m");
+            }
             }
 
             boolean canGoThroughSuccessfully3 = false;
+            if ( codeMatrix.codeMatrix[i][1]==codeMatrix.codeMatrix[i][2] && codeMatrix.codeMatrix[i][1]==codeMatrix.codeMatrix[i][3] ) 
+                System.out.print("    " +  "\u001B[31m" + codeMatrix.codeMatrix[i][1] + " " + codeMatrix.codeMatrix[i][2] + " " + codeMatrix.codeMatrix[i][3] + "\u001B[0m");
+            else {
+            outerloop:
             for (byte j1=0; j1<3; j1++) {
                 for (byte j2=0; j2<3; j2++) {
                     if (j1==j2) continue;
@@ -96,26 +110,37 @@ public class FourPositionsAnalyze {
                             canGoThroughSuccessfully3 = true;  }
                         else {      
                             canGoThroughSuccessfully3 = false; 
-                            break;
+                            break outerloop;
                         }
                     }
                 }
             }
+            
 
             if (canGoThroughSuccessfully3) {
                 Set<Integer> validValues = new HashSet<>(); validValues.add(0);validValues.add(1);validValues.add(2);validValues.add(6);
                 if ( validValues.contains( (codeMatrix.codeMatrix[i][1] + codeMatrix.codeMatrix[i][2]) % 10 ) || 
                      validValues.contains( (codeMatrix.codeMatrix[i][1] + codeMatrix.codeMatrix[i][3]) % 10 ) || 
                      validValues.contains( (codeMatrix.codeMatrix[i][2] + codeMatrix.codeMatrix[i][3]) % 10 ) ) {
-                     System.out.print("    " + codeMatrix.codeMatrix[i][1] + " " + codeMatrix.codeMatrix[i][2] + " " + codeMatrix.codeMatrix[i][3]);
+                        System.out.print("    " +  "\u001B[32m" + codeMatrix.codeMatrix[i][1] + " " + codeMatrix.codeMatrix[i][2] + " " + codeMatrix.codeMatrix[i][3]);
                  }
                 else {
                     canGoThroughSuccessfully3 = false;
+                    System.out.print("    " +  "\u001B[31m" + codeMatrix.codeMatrix[i][1] + " " + codeMatrix.codeMatrix[i][2] + " " + codeMatrix.codeMatrix[i][3] + "\u001B[0m");
+                    
                 }
              }
+            else {
+                System.out.print("    " +  "\u001B[31m" + codeMatrix.codeMatrix[i][1] + " " + codeMatrix.codeMatrix[i][2] + " " + codeMatrix.codeMatrix[i][3] + "\u001B[0m");
+            }
+            }
 
 
             boolean canGoThroughSuccessfully1 = false;
+            if ( codeMatrix.codeMatrix[i][0]==codeMatrix.codeMatrix[i][1] && codeMatrix.codeMatrix[i][0]==codeMatrix.codeMatrix[i][3] ) 
+                System.out.print("    " +  "\u001B[31m" + codeMatrix.codeMatrix[i][0] + " " + codeMatrix.codeMatrix[i][1] + " " + codeMatrix.codeMatrix[i][3] + "\u001B[0m");
+            else {
+            outerloop:
             for (byte j1=0; j1<3; j1++) {
                 for (byte j2=0; j2<3; j2++) {
                     if (j1==j2) continue;
@@ -127,27 +152,38 @@ public class FourPositionsAnalyze {
                                 canGoThroughSuccessfully1 = true;     }
                             else {
                                 canGoThroughSuccessfully1 = false; 
-                                break;
+                                break outerloop;
                             }
                         
                     }
                 }
             }
+            
 
             if (canGoThroughSuccessfully1) {
                 Set<Integer> validValues = new HashSet<>(); validValues.add(0);validValues.add(1);validValues.add(2);validValues.add(6);
                 if ( validValues.contains( (codeMatrix.codeMatrix[i][0] + codeMatrix.codeMatrix[i][1]) % 10 ) || 
                      validValues.contains( (codeMatrix.codeMatrix[i][0] + codeMatrix.codeMatrix[i][3]) % 10 ) || 
                      validValues.contains( (codeMatrix.codeMatrix[i][1] + codeMatrix.codeMatrix[i][3]) % 10 ) ) {
-                     System.out.print("    " + codeMatrix.codeMatrix[i][0] + " " + codeMatrix.codeMatrix[i][1] + " " + codeMatrix.codeMatrix[i][3]);
+                     System.out.print("    " +  "\u001B[32m" + codeMatrix.codeMatrix[i][0] + " " + codeMatrix.codeMatrix[i][1] + " " + codeMatrix.codeMatrix[i][3] + "\u001B[0m");
                  }
                 else {
                     canGoThroughSuccessfully1 = false;
+                    System.out.print("    " +  "\u001B[31m" + codeMatrix.codeMatrix[i][0] + " " + codeMatrix.codeMatrix[i][1] + " " + codeMatrix.codeMatrix[i][3] + "\u001B[0m");
+                   
                 }
+            }
+            else {
+                System.out.print("    " +  "\u001B[31m" + codeMatrix.codeMatrix[i][0] + " " + codeMatrix.codeMatrix[i][1] + " " + codeMatrix.codeMatrix[i][3] + "\u001B[0m");
+            }
             }
             
 
             boolean canGoThroughSuccessfully2 = false;
+            if ( codeMatrix.codeMatrix[i][0]==codeMatrix.codeMatrix[i][2] && codeMatrix.codeMatrix[i][0]==codeMatrix.codeMatrix[i][3] ) 
+                System.out.print("    " +  "\u001B[31m" + codeMatrix.codeMatrix[i][0] + " " + codeMatrix.codeMatrix[i][2] + " " + codeMatrix.codeMatrix[i][3] + "\u001B[0m");
+            else {
+            outerloop:
             for (byte j1=0; j1<3; j1++) {
                 for (byte j2=0; j2<3; j2++) {
                     if (j1==j2) continue;
@@ -159,27 +195,35 @@ public class FourPositionsAnalyze {
                             canGoThroughSuccessfully2 = true;     }
                         else {  
                             canGoThroughSuccessfully2 = false; 
-                            break;
+                            break outerloop;
                         }
                                 
                     }                    
                 }
             }
+            
                 
             if (canGoThroughSuccessfully2) {
                 Set<Integer> validValues = new HashSet<>(); validValues.add(0);validValues.add(1);validValues.add(2);validValues.add(6);
                 if ( validValues.contains( (codeMatrix.codeMatrix[i][0] + codeMatrix.codeMatrix[i][2]) % 10 ) || 
                      validValues.contains( (codeMatrix.codeMatrix[i][0] + codeMatrix.codeMatrix[i][3]) % 10 ) || 
                      validValues.contains( (codeMatrix.codeMatrix[i][2] + codeMatrix.codeMatrix[i][3]) % 10 ) ) {
-                     System.out.print("    " + codeMatrix.codeMatrix[i][0] + " " + codeMatrix.codeMatrix[i][2] + " " + codeMatrix.codeMatrix[i][3]);
+                     System.out.print("    " +  "\u001B[32m" + codeMatrix.codeMatrix[i][0] + " " + codeMatrix.codeMatrix[i][2] + " " + codeMatrix.codeMatrix[i][3] + "\u001B[0m");
                  }
                 else {
                     canGoThroughSuccessfully2 = false;
+                    System.out.print("    " +  "\u001B[31m" + codeMatrix.codeMatrix[i][0] + " " + codeMatrix.codeMatrix[i][2] + " " + codeMatrix.codeMatrix[i][3] + "\u001B[0m");
                 }
              }
+             else {
+                System.out.print("    " +  "\u001B[31m" + codeMatrix.codeMatrix[i][0] + " " + codeMatrix.codeMatrix[i][2] + " " + codeMatrix.codeMatrix[i][3] + "\u001B[0m");
+            }
+            }
+
+
 
             if (!canGoThroughSuccessfully0 && !canGoThroughSuccessfully1 && !canGoThroughSuccessfully2 && !canGoThroughSuccessfully3) {
-            System.out.println("\u001B[31m" + "KILL KILL KILL KILL" + "\u001B[0m" );}
+            System.out.println("\u001B[31m" + "   KILL KILL KILL KILL" + "\u001B[0m" );}
 
 
             i++;
@@ -187,7 +231,7 @@ public class FourPositionsAnalyze {
             
         }
 
-        
+
     int[][] indices = new int[4][3];
     for (int j=0; j<4; j++) {
         for (int k=0; k<3; k++) {

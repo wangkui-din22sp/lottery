@@ -14,7 +14,7 @@ public class FetchAndExtractJsonData {
     public static void main(String[] args) {
     try {
         // The URL endpoint
-        String url = "https://www.uk-wl.net/Penta5Classic/0d2d48772cd48f41e761ef99f40e3ac0/allday/2024-12-31?_=" + System.currentTimeMillis();
+        String url = "https://www.uk-wl.net/Penta5Classic/0d2d48772cd48f41e761ef99f40e3ac0/allday/2025-01-04?_=" + System.currentTimeMillis();
 
         HttpClient client = HttpClient.newHttpClient();
 
