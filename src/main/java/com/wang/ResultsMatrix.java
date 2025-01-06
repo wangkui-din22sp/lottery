@@ -6,6 +6,7 @@ public class ResultsMatrix {
 
     public boolean[][] resultsMatrix = new boolean[288][4];
     public int countStraightFourKills=0;
+    public int[] countTotalKillsForPositionNo = new int[4];
 
     byte[] countStraightKills = new byte[]{1,1,1,1};
     // ArrayList<CountStraightKills> countStraightKillsArrayList0 = new ArrayList<CountStraightKills>();
@@ -47,6 +48,9 @@ public class ResultsMatrix {
                     }
                     countStraightKills[j] =1;
                 }
+                if (resultsMatrix[i][j] == false) {
+                    countTotalKillsForPositionNo[j]++;
+                }
             }
             if (!resultsMatrix[286][j]  && !resultsMatrix[287][j]) {
                 countStraightKillsArrayLists.get(j).add(new CountStraightKills(countStraightKills[j], countStraightKills[j], 1 ));
@@ -83,13 +87,17 @@ public class ResultsMatrix {
                 System.out.print( "\u001B[31m" +countStraightKills.getCountStraightKills() + "\u001B[0m"+ " " + countStraightKills.getStartingEntryNumber() + " " + countStraightKills.getEndingEntryNumber()+"   ");
             }
             System.out.println();
-            System.out.println("组合方式 "  + (i+1) + " 连续杀总计：");
+            System.out.println("组合方式 "  + (i+1) + " 连续杀统计：");
             for (int j = 0; j < 70;  j++) {
                 if (total[i][j] != 0) {
-                System.out.println("连续杀 " + "\u001B[31m"+ j + "\u001B[0m"+ " 期，一共有" + total[i][j] +" 次！");}
+                System.out.println("连续杀 " + "\u001B[31m"+ j + "\u001B[0m"+ " 期，一共有  " + "\u001B[31m"+total[i][j]+ "\u001B[0m"+" 次！");}
                 }
             System.out.println();
                 
+        }
+        System.out.println("每种组合方式的杀数统计：");
+        for (int i = 0; i < 4; i++) {
+            System.out.println("组合方式 " + (i+1) + " 一共杀了 " + "\u001B[31m"+ countTotalKillsForPositionNo[i] + " 期"+"\u001B[0m");
         }
 
     }
