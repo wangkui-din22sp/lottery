@@ -14,7 +14,7 @@ public class FetchAndExtractJsonData {
     public static void main(String[] args) {
     try {
         // The URL endpoint
-        String url = "https://www.uk-wl.net/Penta5Classic/0d2d48772cd48f41e761ef99f40e3ac0/allday/2025-01-04?_=" + System.currentTimeMillis();
+        String url = "https://www.uk-wl.net/Penta5Classic/0d2d48772cd48f41e761ef99f40e3ac0/allday/2025-01-06?_=" + System.currentTimeMillis();
 
         HttpClient client = HttpClient.newHttpClient();
 
@@ -59,7 +59,7 @@ public class FetchAndExtractJsonData {
             }
             System.out.println();
             
-            byte j=0;
+            byte j=1;
             if (i>=1) {
                 if (codeMatrix.codeMatrix[i][j] % 2 ==0  && codeMatrix.codeMatrix[i-1][j] % 2 ==0) { 
                     countStraightEvenNumber++; isTwoConsecutiveEven = true;
